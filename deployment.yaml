@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shire-deployment
+spec:
+  replicas: 2 # Our Fellowship has two instances! 
+  selector:
+    matchLabels:
+      app: shire-app
+  template:
+    metadata:
+      labels:
+        app: shire-app
+    spec:
+      containers:
+      - name: shire-app
+        image: <your-dockerhub-username>/shire-app:v1
+        ports:
+        - containerPort: 8080
